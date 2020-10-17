@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AnimationEvent : MonoBehaviour
 {
@@ -17,5 +18,10 @@ public class AnimationEvent : MonoBehaviour
     {
         playerController.canShoot = true;
         anim.Play("Idle");
+    }
+
+     void CameraStartgame()
+    {
+        SceneManager.LoadScene("GamePlay");
     }
 }
