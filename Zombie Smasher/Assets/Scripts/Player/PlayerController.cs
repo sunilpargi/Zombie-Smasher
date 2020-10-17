@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerController : BaseController
 {
@@ -9,9 +11,17 @@ public class PlayerController : BaseController
     public Transform bullet_StartPoint;
     public GameObject bullet_Prefab;
     public ParticleSystem shootFX;
+
+    public Animator shootSLiderAnim;
+
+    [HideInInspector]
+    public bool canShoot;
     void Start()
     {
+        canShoot = true;
         myBody = GetComponent<Rigidbody>();
+      //  GameObject.Find("ShootBox").GetComponent<Button>().onClick.AddListener(ShootingControl);
+     //   shootSLiderAnim = GameObject.Find("Fire Bar").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -87,12 +97,20 @@ public class PlayerController : BaseController
 
     public void ShootingControl()
     {
-        if (Input.GetMouseButtonDown(0))
+     if(Time.timeScale != 0)
         {
-            GameObject bullet =Instantiate(bullet_Prefab, bullet_StartPoint.position, Quaternion.identity);
+            if (canShoot)
+            {
+                Debug.Log("Clicked");
+                GameObject bullet = Instantiate(bullet_Prefab, bullet_StartPoint.position, Quaternion.identity);
 
-            bullet.GetComponent<Bullet>().Move(2000f);
-            shootFX.Play();
+                bullet.GetComponent<Bullet>().Move(2000f);
+                shootFX.Play();
+
+                canShoot = false;
+                shootSLiderAnim.Play("FadeBar");
+            }
         }
+        
     }
 }

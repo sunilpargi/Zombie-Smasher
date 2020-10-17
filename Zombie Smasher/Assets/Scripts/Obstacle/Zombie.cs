@@ -16,7 +16,7 @@ public class Zombie : MonoBehaviour
         myBody = GetComponent<Rigidbody>();
         myBody.velocity = new Vector3(0f, 0f, -speed);
         isAlive = true;
-        speed = UnityEngine.Random.Range(1f, 5f);
+        speed = UnityEngine.Random.Range(1f, 5f );
     }
 
     // Update is called once per frame
