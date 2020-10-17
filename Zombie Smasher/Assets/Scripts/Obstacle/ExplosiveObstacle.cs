@@ -11,6 +11,7 @@ public class ExplosiveObstacle : MonoBehaviour
         if(target.gameObject.tag == "Player")
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            target.gameObject.GetComponent<PlayerHealth>().ApplyDamage(damage);
             gameObject.SetActive(false);
         }
 

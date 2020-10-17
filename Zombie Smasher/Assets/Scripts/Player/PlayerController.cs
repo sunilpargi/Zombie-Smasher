@@ -18,22 +18,22 @@ public class PlayerController : BaseController
     public bool canShoot;
     void Start()
     {
-        canShoot = true;
         myBody = GetComponent<Rigidbody>();
-      //  GameObject.Find("ShootBox").GetComponent<Button>().onClick.AddListener(ShootingControl);
-     //   shootSLiderAnim = GameObject.Find("Fire Bar").GetComponent<Animator>();
+        GameObject.Find("ShootBox").GetComponent<Button>().onClick.AddListener(ShootingControl);
+       // shootSLiderAnim = GameObject.Find("FireBar").GetComponent<Animator>();
+        canShoot = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         ControlMovementWithKeyboard();
-        ShootingControl();
+        ChangeRotation();   
     }
 
     private void FixedUpdate()
     {
-        ChangeRotation();
+
         Movetank();
     }
     void Movetank()
